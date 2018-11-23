@@ -1,6 +1,6 @@
 ## plot1.R
 ## Question: Have total emissions from PM2.5 decreased in the United States from 1999 to 2008?
-##Pre-requist: the file summarySCC_PM25.rds is in the working directory
+##prerequisite: the file summarySCC_PM25.rds is in the working directory
 
 cat("Running script plot1.R... \n")
 

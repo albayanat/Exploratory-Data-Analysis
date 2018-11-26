@@ -5,9 +5,7 @@
 cat("Running script plot2.R... \n")
 
 ## Read the required datafiles
-
 NEI <- readRDS("summarySCC_PM25.rds")
-
 
 ## Subset the data to Baltimore City, Maryland (fips == "24510")
 NEI_baltimore<- subset(NEI, fips == "24510")
@@ -25,4 +23,4 @@ barplot(total_pm25_year_baltimore, main = "Total Emissions of PM2.5 per year in 
 ## Close the device
 dev.off()
 
-cat("plot2 saved into plot1.png \n End script plot2.R \n")
+cat("plot2 saved into plot2.png \nEnd script plot2.R \n")

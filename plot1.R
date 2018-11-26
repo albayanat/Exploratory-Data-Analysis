@@ -5,7 +5,6 @@
 cat("Running script plot1.R... \n")
 
 ## Read the required datafiles
-
 NEI <- readRDS("summarySCC_PM25.rds")
 
 
@@ -13,17 +12,13 @@ NEI <- readRDS("summarySCC_PM25.rds")
 total_pm25_year <- tapply(NEI$Emissions/1000, NEI$year, sum, na.rm = TRUE)
 
 ## Open png device
-
-
-## close png device
 png("plot1.png", width=480, height=480)
 
 ## Construct the plot
-
 barplot(total_pm25_year, main = "Total Emissions of PM2.5 per year", 
         xlab = "Year", ylab = "Total Emissions of Pm2.5 (x1000 tons)")
 
 ## Close the device
 dev.off()
 
-cat("plot1 saved into plot1.png \n End script plot1.R \n")
+cat("plot1 saved into plot1.png \nEnd script plot1.R \n")

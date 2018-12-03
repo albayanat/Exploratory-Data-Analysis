@@ -1,5 +1,6 @@
 ## plot4.R
 ## Question: Across the United States, how have emissions from coal combustion-related sources changed from 1999-2008?
+##prerequisite: the files summarySCC_PM25.rds and Source_Classification_Code.rds are in the working directory
 
 cat("Running script plot4.R... \n")
 
@@ -22,6 +23,9 @@ df_comb_coal_pm2.5<-ddply(NEI_coal_comb, .(year), function(x) sum(x$Emissions))
 
 ##Rearrange the dataframe
 colnames(df_comb_coal_pm2.5)[2]<-"total_emissions"
+
+##remove unused large objects
+rm(NEI,SCC, SCC_coal_comb,NEI_coal_comb )
 
 ## Open png device
 png("plot4.png", width=480, height=480)

@@ -1,7 +1,8 @@
 ## plot3.R
 ## Question: Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, 
-## which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? 
-## Which have seen increases in emissions from 1999–2008?
+## which of these four sources have seen decreases in emissions from 1999-2008 for Baltimore City? 
+## Which have seen increases in emissions from 1999-2008?
+##prerequisite: the file summarySCC_PM25.rds is in the working directory
 
 cat("Running script plot3.R... \n")
 
@@ -32,10 +33,12 @@ rm(NEI,df_baltimore)
 png("plot3.png", width=480, height=480)
 
 ## Construct the plot
-plot3<-qplot(year, total_emissions, data=df_baltimore_pm2.5,
-      geom = "line", colour = type)
-plot3<-plot3+ggtitle("Total emissions of PM2.5 per source and per year in Baltimore, MD")
-plot3<-plot3+xlab("Year")+ ylab("Total emissions of PM2.5 (tons)")
+plot3<-ggplot(df_baltimore_pm2.5, aes(factor(year), total_emissions, fill=type))
+plot3<-plot3+geom_bar(stat="identity")+facet_grid(.~type)
+plot3<-plot3+xlab("Year")+ylab("Total Emissions of PM2.5 (tons)")
+plot3<-plot3+ggtitle("Total emissions of PM2.5 per type of source and per year in Baltimore, MD")
+plot3<-plot3+theme_bw()
+plot3<-plot3+guides(fill=FALSE)
 print(plot3)
 
 ## Close the device

@@ -1,5 +1,6 @@
 ## plot5.R
 ## Question: How have emissions from motor vehicle sources changed from 1999-2008 in Baltimore City?
+##prerequisite: the files summarySCC_PM25.rds and Source_Classification_Code.rds are in the working directory
 
 cat("Running script plot5.R... \n")
 
@@ -22,6 +23,9 @@ df_baltimore_vehicle_pm2.5<-ddply(NEI_baltimore_vehicle, .(year), function(x) su
 
 ##Rearrange the dataframe
 colnames(df_baltimore_vehicle_pm2.5)[2]<-"total_emissions"
+
+##remove unused large objects
+rm(NEI,SCC, SCC_vehicle,NEI_baltimore_vehicle)
 
 ## Open png device
 png("plot5.png", width=480, height=480)

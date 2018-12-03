@@ -13,8 +13,8 @@ library(plyr)
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-## Subset to coal combustion related source
-SCC_coal_comb<-subset(SCC, grepl("[Cc][Oo][Aa][Ll]", Short.Name) & grepl("[Cc][Oo][Mm][Mb]", Short.Name))
+## Subset to coal combustion related source using SCC/
+SCC_coal_comb<-subset(SCC, grepl("comb", SCC.Level.One, ignore.case=TRUE) & grepl("coal",SCC.Level.Four, ignore.case = TRUE))
 NEI_coal_comb<-subset(NEI, SCC %in% SCC_coal_comb$SCC)
 
 ##Compute Total emissions of PM2.5 per year for coal combustion-related sources
